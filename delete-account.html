@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eliminar cuenta – HomeDesign by lagaldeveloper</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f5f2ee;
+      --surface: #ffffff;
+      --ink: #1a1714;
+      --ink-soft: #5c5550;
+      --accent: #c94f2c;
+      --accent-light: #fbeee9;
+      --border: #e2ddd8;
+      --step-bg: #f9f7f5;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .logo-mark {
+      width: 40px; height: 40px;
+      background: var(--ink);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .logo-mark svg { width: 22px; height: 22px; fill: none; stroke: white; stroke-width: 1.8; }
+
+    .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .logo-text strong { font-family: 'DM Serif Display', serif; font-size: 1.15rem; letter-spacing: -0.02em; }
+    .logo-text span { font-size: 0.72rem; color: var(--ink-soft); font-weight: 300; letter-spacing: 0.04em; text-transform: uppercase; }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 3.5rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      max-width: 540px;
+      margin: 0 auto 1rem;
+    }
+
+    .hero p {
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+      font-weight: 300;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* ── Main content ── */
+    main {
+      flex: 1;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+      width: 100%;
+    }
+
+    /* ── Section heading ── */
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+
+    /* ── Steps ── */
+    .steps { display: flex; flex-direction: column; gap: 1px; margin-bottom: 3rem; }
+
+    .step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0;
+      padding: 1.6rem 1.8rem;
+      display: grid;
+      grid-template-columns: 2.2rem 1fr;
+      gap: 1rem;
+      align-items: start;
+      transition: background 0.15s;
+    }
+
+    .step:first-child { border-radius: 12px 12px 0 0; }
+    .step:last-child  { border-radius: 0 0 12px 12px; }
+    .step:only-child  { border-radius: 12px; }
+
+    .step:hover { background: var(--step-bg); }
+
+    .step-num {
+      width: 2.2rem; height: 2.2rem;
+      border-radius: 50%;
+      background: var(--ink);
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 500;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .step-body h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.01em;
+    }
+
+    .step-body p {
+      color: var(--ink-soft);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .step-body .highlight {
+      display: inline-block;
+      background: var(--step-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.1rem 0.5rem;
+      font-family: monospace;
+      font-size: 0.88rem;
+      color: var(--ink);
+      margin-top: 0.35rem;
+    }
+
+    /* ── CTA button ── */
+    .cta-block {
+      background: var(--accent);
+      border-radius: 14px;
+      padding: 2.2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.2rem;
+      margin-bottom: 3rem;
+    }
+
+    .cta-block p {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.55;
+    }
+
+    .cta-block strong { color: white; font-weight: 500; }
+
+    .btn-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: white;
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      padding: 0.75rem 1.4rem;
+      border-radius: 8px;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+
+    .btn-email:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    .btn-email svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+    /* ── Data table ── */
+    .data-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 3rem;
+    }
+
+    .data-card table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .data-card thead th {
+      background: var(--step-bg);
+      padding: 0.9rem 1.2rem;
+      text-align: left;
+      font-weight: 500;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .data-card tbody tr:not(:last-child) td { border-bottom: 1px solid var(--border); }
+
+    .data-card tbody td {
+      padding: 1rem 1.2rem;
+      color: var(--ink-soft);
+      font-weight: 300;
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    .data-card tbody td:first-child { color: var(--ink); font-weight: 400; }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.15rem 0.55rem;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    .tag-delete { background: #fbeee9; color: var(--accent); }
+    .tag-keep   { background: #eef5ea; color: #3a7d2c; }
+
+    /* ── Notice ── */
+    .notice {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.2rem;
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+      margin-bottom: 3rem;
+    }
+
+    .notice strong { color: var(--ink); }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      font-weight: 300;
+    }
+
+    footer a { color: var(--ink-soft); }
+
+    @media (max-width: 500px) {
+      .hero { padding: 2.5rem 1.2rem 2rem; }
+      .step { padding: 1.2rem 1.1rem; gap: 0.75rem; }
+      .cta-block { padding: 1.6rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-mark">
+      <!-- simple house icon -->
+      <svg viewBox="0 0 24 24">
+        <path d="M3 10.5L12 3l9 7.5V21H15v-5h-6v5H3z"/>
+      </svg>
+    </div>
+    <div class="logo-text">
+      <strong>HomeDesign</strong>
+      <span>by lagaldeveloper</span>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-badge">Gestión de cuenta</div>
+    <h1>Eliminar tu cuenta y datos</h1>
+    <p>Tienes derecho a eliminar tu cuenta y todos los datos asociados en cualquier momento. El proceso es sencillo y se completa en menos de 48&nbsp;horas.</p>
+  </section>
+
+  <main>
+
+    <!-- Steps -->
+    <p class="section-label">Cómo solicitarlo</p>
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Envía un correo electrónico</h3>
+          <p>Escribe a nuestra dirección de soporte indicando que deseas eliminar tu cuenta de HomeDesign.</p>
+          <span class="highlight">lagal.developer@gmail.com</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Incluye tu identificación de usuario</h3>
+          <p>Para verificar tu identidad, incluye la dirección de correo electrónico asociada a tu cuenta de Google con la que iniciaste sesión en HomeDesign.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Confirmación y ejecución</h3>
+          <p>Recibirás un correo de confirmación en un plazo máximo de <strong>48 horas</strong>. Una vez confirmada tu identidad, eliminaremos tu cuenta y los datos asociados en un plazo de <strong>30 días</strong>.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-block">
+      <div>
+        <strong>¿Listo para proceder?</strong>
+        <p>Haz clic en el botón para abrir tu cliente de correo con el asunto ya preparado.</p>
+      </div>
+      <a class="btn-email"
+         href="mailto:lagal.developer@gmail.com?subject=Solicitud%20de%20eliminaci%C3%B3n%20de%20cuenta%20%E2%80%93%20HomeDesign&body=Hola%2C%0A%0ASolicito%20la%20eliminaci%C3%B3n%20de%20mi%20cuenta%20y%20datos%20en%20la%20aplicaci%C3%B3n%20HomeDesign.%0A%0ACorrecto%20electr%C3%B3nico%20de%20mi%20cuenta%3A%20%5Btu%40correo.com%5D%0A%0AGracias.">
+        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+        Enviar solicitud por correo
+      </a>
+    </div>
+
+    <!-- Data table -->
+    <p class="section-label">Qué datos se eliminan y cuáles se conservan</p>
+    <div class="data-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Tipo de dato</th>
+            <th>Acción</th>
+            <th>Periodo de retención</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Nombre y correo electrónico (Google Sign-In)</td>
+            <td><span class="tag tag-delete">Eliminado</span></td>
+            <td>Inmediatamente tras confirmar la solicitud</td>
+          </tr>
+          <tr>
+            <td>Proyectos y planos guardados</td>
+            <td><span class="tag tag-delete">Eliminado</span></td>
+            <td>En un plazo de 30 días</td>
+          </tr>
+          <tr>
+            <td>Preferencias y configuración de la app</td>
+            <td><span class="tag tag-delete">Eliminado</span></td>
+            <td>En un plazo de 30 días</td>
+          </tr>
+          <tr>
+            <td>Historial de suscripción / pagos</td>
+            <td><span class="tag tag-keep">Conservado</span></td>
+            <td>Hasta 5 años por obligaciones legales y fiscales</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Notice -->
+    <div class="notice">
+      <strong>Nota sobre la suscripción activa:</strong> Si tienes una suscripción activa al eliminar tu cuenta, esta dejará de renovarse automáticamente. Para cancelar la suscripción de forma independiente, puedes hacerlo desde <em>Google Play → Suscripciones</em> en cualquier momento. No se realizan reembolsos por el periodo restante.
+    </div>
+
+  </main>
+
+  <footer>
+    <p>HomeDesign &copy; 2025 lagaldeveloper &nbsp;·&nbsp; <a href="https://lagaldeveloper.github.io/Homedesign-privacy/privacy-policy.html">Política de privacidad</a></p>
+  </footer>
+
+</body>
+</html>
